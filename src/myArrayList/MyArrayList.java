@@ -26,5 +26,6 @@ public class MyArrayList <E> {
         theData = (E[]) new Object[capacity];
     }
 
+    //now we're going to add methods for our ArrayList class
     
 }
