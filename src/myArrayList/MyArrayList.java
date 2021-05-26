@@ -6,7 +6,7 @@ import java.util.Arrays;
  * MyArrayList This is a Implementation for Array List A custom Implementation
  * for learning purpose
  */
-public class MyArrayList <E> {
+public class MyArrayList<E> {
 
     // Data Fields
 
@@ -22,38 +22,59 @@ public class MyArrayList <E> {
     // The current capacity
     private int capacity = 0;
 
-    //constructor for custom arraylist class.
+    // constructor for custom arraylist class.
     @SuppressWarnings("unchecked")
     public MyArrayList() {
         capacity = INITIAL_CAPACITY;
         theData = (E[]) new Object[capacity];
     }
 
-    //now we're going to add methods for our ArrayList class
+    // now we're going to add methods for our ArrayList class
 
-    //reacllocate method which we're going to use when our array gets full of space and we need to change its size.
+    // reacllocate method which we're going to use when our array gets full of space
+    // and we need to change its size.
 
-    private void reallocate(){
-        capacity = capacity*2;
+    private void reallocate() {
+        capacity = capacity * 2;
         theData = Arrays.copyOf(theData, capacity);
     }
 
     /**
-     * add method bascially gonna add an entry to the next of last used
-     * index of the array theData and if the size of the array is equals to the capacity of the
-     * array, it means that the array is full and need to resize, which means we're gonna create another array of bigger size
-     * and copy all the array entries to the newer array and change our primary array to new array.
+     * add method bascially gonna add an entry to the next of last used index of the
+     * array theData and if the size of the array is equals to the capacity of the
+     * array, it means that the array is full and need to resize, which means we're
+     * gonna create another array of bigger size and copy all the array entries to
+     * the newer array and change our primary array to new array.
      */
 
     public boolean add(E anEntry) {
         if (size == capacity) {
-            //this function is gonna do the creation and resizing of the array.
+            // this function is gonna do the creation and resizing of the array.
             reallocate();
         }
         theData[size++] = anEntry;
         return true;
     }
-    
 
-    
+    // now an add method for place the data at specific index
+    public void add(int index, E anEntry) {
+        if (index < 0 || index > size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        if (size == capacity) {
+            reallocate();
+        }
+        // now we're gonna shift the data from given index to (size -1)th index.
+        
+        //=========== main work ==============
+        for (int i = size; i > index; i--) {
+            theData[i] = theData[i - 1];
+        }
+        //====================================
+        
+        // now we can insert item at desired index.
+        theData[index] = anEntry;
+        size++;
+    }
+
 }
