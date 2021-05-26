@@ -58,23 +58,39 @@ public class MyArrayList<E> {
 
     // now an add method for place the data at specific index
     public void add(int index, E anEntry) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException(index);
         }
         if (size == capacity) {
             reallocate();
         }
         // now we're gonna shift the data from given index to (size -1)th index.
-        
-        //=========== main work ==============
+
+        // =========== main work ==============
         for (int i = size; i > index; i--) {
             theData[i] = theData[i - 1];
         }
-        //====================================
-        
+        // ====================================
+
         // now we can insert item at desired index.
         theData[index] = anEntry;
         size++;
+    }
+
+    public E get(int index) {
+        if (index < 0 || index >= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        return theData[index];
+    }
+
+    public E set(int index, E newValue) {
+        if (index < 0 || index >= size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        var oldValue = theData[index];
+        theData[index] = newValue;
+        return oldValue;
     }
 
 }
