@@ -93,4 +93,17 @@ public class MyArrayList<E> {
         return oldValue;
     }
 
+    //now we're gonna implement remove method for our Arraylist.
+    public E remove(int index){
+        if (index < 0 || index >= size) 
+            throw new ArrayIndexOutOfBoundsException(index);
+        
+        var returnValue = theData[index];
+
+        for (int i = index + 1; i < size; i++) {
+            theData[i-1] = theData[i];
+        }
+        size--;
+        return returnValue;
+    }
 }
