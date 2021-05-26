@@ -106,4 +106,9 @@ public class MyArrayList<E> {
         size--;
         return returnValue;
     }
+
+    @Override
+    public String toString() {
+        return "theData=" + Arrays.toString(theData);
+    }
 }
