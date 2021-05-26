@@ -1,5 +1,7 @@
 package myarraylist;
 
+import java.util.Arrays;
+
 /**
  * MyArrayList This is a Implementation for Array List A custom Implementation
  * for learning purpose
@@ -29,6 +31,13 @@ public class MyArrayList <E> {
 
     //now we're going to add methods for our ArrayList class
 
+    //reacllocate method which we're going to use when our array gets full of space and we need to change its size.
+
+    private void reallocate(){
+        capacity = capacity*2;
+        theData = Arrays.copyOf(theData, capacity);
+    }
+
     /**
      * add method bascially gonna add an entry to the next of last used
      * index of the array theData and if the size of the array is equals to the capacity of the
@@ -41,9 +50,10 @@ public class MyArrayList <E> {
             //this function is gonna do the creation and resizing of the array.
             reallocate();
         }
-        theData[size] = anEntry;
-        size++;
+        theData[size++] = anEntry;
         return true;
     }
+    
+
     
 }
