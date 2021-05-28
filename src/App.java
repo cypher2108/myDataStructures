@@ -12,11 +12,6 @@ public class App {
             list.add(i);
         }
 
-        list.printList();
-
-        list.add(20, 10);
-
-        list.printList();
-
+        list.remove(0);
     }
 }

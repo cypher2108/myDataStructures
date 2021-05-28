@@ -107,6 +107,34 @@ public class SingleLinkedList<E> {
             System.out.println("There is no such index you're trying to access.");
         }
     }
+
+    public void remove (int index){
+        
+        /**
+         * so let's disciss the scenerio
+         * there are two possibilities here too,
+         * 1. if user removes the first element
+         * 2. if user removes the element at specific index.
+         */
+
+         if (index == 0) {
+             head = head.nextNodeRef;
+             size--;
+         } else{
+            Node<E> temp = head;
+            for (var i = 0; i < index - 1; i++) {
+                temp = temp.nextNodeRef;
+            }
+
+            Node<E> frontNode = temp;
+            temp = temp.nextNodeRef;
+            frontNode.nextNodeRef = temp.nextNodeRef;
+            size--;
+         }
+
+    }
+
+
     
     public void printList(){
         Node<E> temp = head;
