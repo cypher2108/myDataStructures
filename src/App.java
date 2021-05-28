@@ -1,4 +1,4 @@
-import myarraylist.MyArrayList;
+import linkedList.SingleLinkedList;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -6,23 +6,17 @@ public class App {
 
         //now wee're testing our own custom ArrayList class.
 
-        MyArrayList<Integer> myArrayList = new MyArrayList<>();
+        SingleLinkedList<Integer> list = new SingleLinkedList<>();
 
-        for (var i = 0; i < 18; i++) {
-            myArrayList.add(i);    
+        for (var i = 0; i < 20; i++) {
+            list.add(i);
         }
 
-        System.out.println(myArrayList);
+        list.printList();
 
-        myArrayList.add(9, 21);
-        myArrayList.add(10, 22);
+        list.add(20, 10);
 
-        System.out.println(myArrayList);
-
-        myArrayList.remove(10);
-        myArrayList.remove(9);
-
-        System.out.println(myArrayList);
+        list.printList();
 
     }
 }

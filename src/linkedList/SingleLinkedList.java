@@ -17,6 +17,13 @@ public class SingleLinkedList<E> {
             this.nextNodeRef = null;
         }
 
+        @Override
+        public String toString() {
+            return "Node [" + theData + "]";
+        }
+
+        
+
     }
 
     //data fields for the single-linked-list class
@@ -57,11 +64,56 @@ public class SingleLinkedList<E> {
             }
             //once we get to that node we're gonna set the next node refrence to the new node we've created for the data we've given.
             temp.nextNodeRef = new Node<>(anEntry);
+            size++;
         }
 
     }
 
     //what if we're want to add our data at specific index.
-    
 
+    //one important thing to take a note on is we're starting our list with index 0 not 1 , keep that in mind.
+    public void add(E anEntry, int index){
+        
+        //check if the list is empty of index exist in our list or not.
+        if (index >= 0 || index < size) {
+            
+            /**
+             * now check for same conditions.
+             * Here there are two possibilities that
+             * 
+             * 1.if they're trying to insert the data at the first index
+             * 2. they're trying to insert data  at any other index.
+             */
+
+             if (index == 0) {
+                 Node<E> temp = head;
+                 head = new Node<>(anEntry);
+                 head.nextNodeRef = temp;
+                 size++;
+             } else{
+                 Node<E> temp = head;
+                 for (int i = 0; i < index - 1; i++) {
+                     temp = temp.nextNodeRef;
+                 }
+
+                 Node<E> tempNode = temp.nextNodeRef;
+                 temp.nextNodeRef = new Node<>(anEntry);
+                 temp = temp.nextNodeRef;
+                 temp.nextNodeRef = tempNode;
+                 size++;
+             }
+
+        } else{
+            System.out.println("There is no such index you're trying to access.");
+        }
+    }
+    
+    public void printList(){
+        Node<E> temp = head;
+        for (int i = 0; i < size; i++) {
+            System.out.println(temp.theData);
+            temp = temp.nextNodeRef;
+        }
+    }
+    
 }
