@@ -1,4 +1,4 @@
-package linkedList;
+package mylist;
 
 public class SingleLinkedList<E> {
 
@@ -92,7 +92,7 @@ public class SingleLinkedList<E> {
                  size++;
              } else{
                  Node<E> temp = head;
-                 for (int i = 0; i < index - 1; i++) {
+                 for (var i = 0; i < index - 1; i++) {
                      temp = temp.nextNodeRef;
                  }
 
@@ -110,7 +110,7 @@ public class SingleLinkedList<E> {
     
     public void printList(){
         Node<E> temp = head;
-        for (int i = 0; i < size; i++) {
+        for (var i = 0; i < size; i++) {
             System.out.println(temp.theData);
             temp = temp.nextNodeRef;
         }
