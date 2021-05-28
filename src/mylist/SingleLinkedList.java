@@ -131,11 +131,36 @@ public class SingleLinkedList<E> {
             frontNode.nextNodeRef = temp.nextNodeRef;
             size--;
          }
-
     }
 
+    public E get(int index){
+        Node<E> temp = head;
+            for (var i = 0; i < index ; i++) {
+                temp = temp.nextNodeRef;
+            }
+            return temp.theData;
+    }
 
-    
+    public void set(int index, E anEntry){
+        Node<E> temp = head;
+            for (var i = 0; i < index ; i++) {
+                temp = temp.nextNodeRef;
+            }
+            temp.theData = anEntry;
+    }
+
+    public int indexOf(E target){
+        Node<E> temp = head;
+        for (int i = 0; i < size; i++) {
+            if (temp.theData == target) {
+                return i;
+            } else{
+                temp = temp.nextNodeRef;
+            }
+        }
+        return -1;
+    }
+
     public void printList(){
         Node<E> temp = head;
         for (var i = 0; i < size; i++) {

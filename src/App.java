@@ -13,5 +13,7 @@ public class App {
         }
 
         list.remove(0);
+
+        System.out.println(list.indexOf(10));
     }
 }
