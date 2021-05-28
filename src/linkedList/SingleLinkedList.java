@@ -9,6 +9,7 @@ public class SingleLinkedList<E> {
         //this is our data fields which tells that our single node contains any sort on
         //data object and also contains the refrence for the next node.
         private E theData;
+        private int index;
         private Node<E> nextNodeRef;
 
         //constructor for our node class.
@@ -47,6 +48,23 @@ public class SingleLinkedList<E> {
     public void add(E anEntry){
         //now there are some possiblities in adding data which we're gonna cover
         //in this method.
+
+        //1. what if our list would be an empty list.
+        if (head == null) {
+            head = new Node<>(anEntry);
+            size++;
+        } else{
+            //2. if it's not an empty list.
+            Node <E> temp = head;
+            
+            //basically looping through the whole loop to get to that last node after which we're want to add next node.
+            while (temp.nextNodeRef != null) {
+                temp = temp.nextNodeRef;
+            }
+            //once we get to that node we're gonna set the next node refrence to the new node we've created for the data we've given.
+            temp.nextNodeRef = new Node<>(anEntry);
+        }
+
     }
 
 }
